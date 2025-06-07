@@ -1,24 +1,5 @@
-## GPSSystem Graph
-
-```mermaid
-graph TD
-    NY["New York"] -->|790 km| CHI["Chicago"]
-    NY -->|1280 km| MIA["Miami"]
-    CHI -->|1000 km| DEN["Denver"]
-    CHI -->|1080 km| HOU["Houston"]
-    DEN -->|1300 km| SEA["Seattle"]
-    DEN -->|830 km| PHX["Phoenix"]
-    HOU -->|1175 km| PHX
-    HOU -->|2000 km| LA["Los Angeles"]
-    PHX -->|370 km| LA
-```
-
-## SearchEngine Data
-
-```json
 {
   "documents": [
-    
     "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
 
     "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.",
@@ -37,7 +18,5 @@ graph TD
 
     "A very large document with the phrase repeated many times to make the search algorithm work harder. Not all those who wander are lost. Not all those who wander are lost. Not all those who wander are lost. Not all those who wander are lost."
   ],
-  
   "pattern": "Not all those who wander are lost"
 }
-```

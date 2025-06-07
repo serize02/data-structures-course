@@ -1,5 +1,7 @@
 package stmatching;
 
+import java.util.Arrays;
+
 public class StringMatching {
 
     private static boolean check(int n, int m){
@@ -13,47 +15,46 @@ public class StringMatching {
 
         if (!check(n, m))  return -1;
 
+        int ans = 0;
+
         for (int i =0 ; i < str.length(); i++){
             int j = 0;
             while (j < pattern.length() && pattern.charAt(j) == str.charAt(i+j)) j++;
-            if (j == pattern.length()) return i;
+            if (j == pattern.length()) ans++;
         }
 
-        return -1;
+        return ans;
     }
 
-    public static int BoyerMoore(String str, String pattern) {
-
+    public static int boyerMoore(String str, String pattern) {
         int n = str.length();
         int m = pattern.length();
 
         if (!check(n, m))  return -1;
 
-        int i = m - 1;
-        int j = m - 1;
+        // ascii-code
+        int[] last = new int[256];
+        Arrays.fill(last, -1);
+        for (int i = 0; i < m; i++) last[pattern.charAt(i)] = i;
+
+
+        int ans = 0;
+        int i = 0;
 
         do {
-            if (pattern.charAt(j) == str.charAt(i)) {
-                if (j == 0) return i;
-                else {
-                    j--;
-                    i--;
-                }
+            int j = m - 1;
+            while (j >= 0 && pattern.charAt(j) == str.charAt(i + j)) j--;
+            if (j < 0) {
+                ans++;
+                i++;
+            } else {
+                int shift = j - last[str.charAt(i + j)];
+                i += Math.max(1, shift);
             }
-            else {
-                i += m - Math.min(j, 1+ last(str.charAt(i), pattern));
-                j = m - 1;
-            }
-        } while(i <= n-1);
+        } while (i <= n - m);
 
-        return -1;
+        return ans;
     }
 
-    private static int last(char c, String pattern) {
-        for (int i = pattern.length() - 1; i >= 0; i--) {
-            if (pattern.charAt(i) == c) return i;
-        }
-        return -1;
-    }
 
 }
