@@ -70,6 +70,17 @@ public class AdjacencyListGraph implements Graph {
         return builder.toString();
     }
 
+    public int countCommon(String node1, String node2) {
+        int node1Index = find(node1);
+        int node2Index = find(node2);
+        if (node1Index == -1 || node2Index == -1 || node1Index == node2Index) return -1;
+        int common = 0;
+        for (int i = 0; i < nodeCount; i++) {
+            if (i!=node1Index && i!=node2Index && isAdjacent(node1, table[i].getName()) && isAdjacent(node2, table[i].getName())) common++;
+        }
+        return common;
+    }
+
     // -- interface-methods--
     @Override
     public int addNode(String name) {
@@ -244,6 +255,33 @@ public class AdjacencyListGraph implements Graph {
                 }
             }
         }
+    }
+
+    public List<String> KBFS(String startNode, int k) {
+        reset();
+        int startIndex = find(startNode);
+        if (startIndex == -1) return null;
+
+        Queue<Integer> queue = new LinkedList<>();
+        table[startIndex].setDistance(0);
+        queue.add(startIndex);
+
+        List<String> result = new ArrayList<>();
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            if(current != startIndex) result.add(table[current].getName());
+            if (table[current].getDistance() == k) continue;
+            for (Edge edge : table[current].getAdjacencyList()) {
+                int neighbor = edge.getDestination();
+                if (table[neighbor].getDistance() == INFINITY) {
+                    table[neighbor].setDistance(table[current].getDistance() + 1);
+                    table[neighbor].setPredecessor(current);
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return result;
     }
 
     @Override

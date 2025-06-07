@@ -17,7 +17,7 @@ public class Engine {
         this.queue = new PriorityQueueHeap();
 
         for (String document : documents) {
-            int frequency = matcher.boyerMoore(document, pattern);
+            int frequency = matcher.boyerMooreAll(document, pattern);
             queue.insert(document, frequency);
         }
     }
@@ -25,7 +25,7 @@ public class Engine {
     public double bruteForce() {
         long start = System.nanoTime();
         for (String document : documents) {
-            matcher.bruteForce(document, pattern);
+            matcher.bruteForceAll(document, pattern);
         }
         long end = System.nanoTime();
         double elapsedMillis = (end - start) / 1_000_000.0;
@@ -35,7 +35,7 @@ public class Engine {
     public double boyerMoore() {
         long start = System.nanoTime();
         for (String document : documents) {
-            matcher.boyerMoore(document, pattern);
+            matcher.boyerMooreAll(document, pattern);
         }
         long end = System.nanoTime();
         double elapsedMillis = (end - start) / 1_000_000.0;

@@ -41,3 +41,79 @@ graph TD
   "pattern": "Not all those who wander are lost"
 }
 ```
+
+## Network
+
+```mermaid
+graph TD
+
+%% Alice
+    AJ[Alice Johnson]
+    AM[Alice Morales]
+    AR[Alice Rivera]
+
+%% Bob
+    BS[Bob Smith]
+    BC[Bob Carter]
+    BG[Bob Gonzalez]
+
+%% Charlie
+    CD[Charlie Davis]
+    CN[Charlie Nguyen]
+    CF[Charlie Flores]
+
+%% Diana
+    DB[Diana Brown]
+    DO[Diana Ortega]
+    DT[Diana Torres]
+
+%% Eve
+    ET[Eve Thompson]
+    ED[Eve Delgado]
+    EN[Eve Navarro]
+
+%% Frank
+    FM[Frank Miller]
+    FR[Frank Ramirez]
+    FG[Frank Gomez]
+
+%% Otros
+    GA[Grace Allen]
+    HS[Heidi Silva]
+    IM[Ivan Martinez]
+    JL[Judy Lopez]
+
+%% Relaciones
+    AJ --- BS
+    AM --- BC
+    AR --- BG
+
+    AJ --- CD
+    AM --- CN
+    AR --- CF
+
+    BS --- DB
+    BC --- DO
+    BG --- DT
+
+    CD --- ET
+    CN --- ED
+    CF --- EN
+
+    DB --- FM
+    DO --- FR
+    DT --- FG
+
+    ET --- GA
+    ED --- HS
+    EN --- IM
+
+    FM --- JL
+    FR --- GA
+    FG --- HS
+
+    GA --- AR
+    HS --- AJ
+    IM --- AM
+
+```

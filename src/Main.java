@@ -1,6 +1,7 @@
 import gps.GPSSystem;
 import priority_queue.EmptyPriorityQueueException;
 import searchengine.Engine;
+import network.Net;
 
 public class Main {
     public static void main(String[] args) throws EmptyPriorityQueueException {
@@ -55,5 +56,73 @@ public class Main {
         engine.compareMethods();
         engine.priority();
 
+        // social netwoek
+        Net network = new Net();
+
+        network.addUser("Alice Johnson");
+        network.addUser("Alice Morales");
+        network.addUser("Alice Rivera");
+
+        network.addUser("Bob Smith");
+        network.addUser("Bob Carter");
+        network.addUser("Bob Gonzalez");
+
+        network.addUser("Charlie Davis");
+        network.addUser("Charlie Nguyen");
+        network.addUser("Charlie Flores");
+
+        network.addUser("Diana Brown");
+        network.addUser("Diana Ortega");
+        network.addUser("Diana Torres");
+
+        network.addUser("Eve Thompson");
+        network.addUser("Eve Delgado");
+        network.addUser("Eve Navarro");
+
+        network.addUser("Frank Miller");
+        network.addUser("Frank Ramirez");
+        network.addUser("Frank Gomez");
+
+        network.addUser("Grace Allen");
+        network.addUser("Heidi Silva");
+        network.addUser("Ivan Martinez");
+        network.addUser("Judy Lopez");
+
+        // Relaciones (amistades)
+        network.addFriend("Alice Johnson", "Bob Smith");
+        network.addFriend("Alice Morales", "Bob Carter");
+        network.addFriend("Alice Rivera", "Bob Gonzalez");
+
+        network.addFriend("Alice Johnson", "Charlie Davis");
+        network.addFriend("Alice Morales", "Charlie Nguyen");
+        network.addFriend("Alice Rivera", "Charlie Flores");
+
+        network.addFriend("Bob Smith", "Diana Brown");
+        network.addFriend("Bob Carter", "Diana Ortega");
+        network.addFriend("Bob Gonzalez", "Diana Torres");
+
+        network.addFriend("Charlie Davis", "Eve Thompson");
+        network.addFriend("Charlie Nguyen", "Eve Delgado");
+        network.addFriend("Charlie Flores", "Eve Navarro");
+
+        network.addFriend("Diana Brown", "Frank Miller");
+        network.addFriend("Diana Ortega", "Frank Ramirez");
+        network.addFriend("Diana Torres", "Frank Gomez");
+
+        network.addFriend("Eve Thompson", "Grace Allen");
+        network.addFriend("Eve Delgado", "Heidi Silva");
+        network.addFriend("Eve Navarro", "Ivan Martinez");
+
+        network.addFriend("Frank Miller", "Judy Lopez");
+        network.addFriend("Frank Ramirez", "Grace Allen");
+        network.addFriend("Frank Gomez", "Heidi Silva");
+
+        network.addFriend("Grace Allen", "Alice Rivera");
+        network.addFriend("Heidi Silva", "Alice Johnson");
+        network.addFriend("Ivan Martinez", "Alice Morales");
+
+        network.find("Alice");
+        network.KFriends("Eve Navarro", 4);
+        network.recommendation("Frank Miller");
     }
 }
