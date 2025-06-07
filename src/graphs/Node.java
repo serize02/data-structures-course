@@ -16,7 +16,7 @@ public class Node implements Comparable<Node> {
     }
 
     public Node() {
-        this.distance = -1;
+        this.distance = Float.MAX_VALUE;
     }
 
     public Node(String name, float distance) {
@@ -60,6 +60,6 @@ public class Node implements Comparable<Node> {
 
     @Override
     public int compareTo(Node other) {
-        return Float.compare(distance, other.distance);
+        return Float.compare(this.distance, other.distance);
     }
 }

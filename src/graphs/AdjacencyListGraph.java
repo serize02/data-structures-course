@@ -36,6 +36,40 @@ public class AdjacencyListGraph implements Graph {
         }
     }
 
+    public Float getDistance(String node) {
+        int pos = find(node);
+        if (pos == -1) {
+            return null;
+        }
+        return table[pos].getDistance();
+    }
+
+    public List<Float> getDistances() {
+        List<Float> distances = new ArrayList<>();
+        for (int i = 0; i < nodeCount; i++) {
+            distances.add(table[i].getDistance());
+        }
+        return distances;
+    }
+
+    public String getPath(String node) {
+        int pos = find(node);
+        List<String> path = new ArrayList<>();
+        while (pos != -1) {
+            path.add(table[pos].getName());
+            pos = table[pos].getPredecessor();
+        }
+        Collections.reverse(path);
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < path.size(); i++) {
+            builder.append(path.get(i));
+            if (i != path.size() - 1) {
+                builder.append(" -> ");
+            }
+        }
+        return builder.toString();
+    }
+
     // -- interface-methods--
     @Override
     public int addNode(String name) {
@@ -49,8 +83,6 @@ public class AdjacencyListGraph implements Graph {
         table[nodeCount] = newNode;
         return nodeCount++;
     }
-
-
 
     @Override
     public void addEdge(String source, String destination, float cost) {
