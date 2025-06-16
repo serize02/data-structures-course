@@ -106,5 +106,45 @@ public class StringMatching {
         return ans;
     }
 
+    private static int [] failureFunctionKMP(String pattern) {
+        int n = pattern.length();
+        int function [] = new int[n];
+        function[0] = 0;
+        int i = 1, j = 0;
+        while (i < n) {
+            if (pattern.charAt(j) == pattern.charAt(i)) {
+                function[i] = j+1;
+                j++;
+                i++;
+            }
+            else {
+                if (j > 0) j = function[j-1];
+                else {
+                    function[i] = 0;
+                    i++;
+                }
+            }
+        }
+        return function;
+    }
 
+    public static int KMP(String str, String pattern) {
+        int n = str.length();
+        int m = pattern.length();
+        if (!check(n, m))  return -1;
+        int i = 0, j = 0;
+        int failure[] = failureFunctionKMP(pattern);
+        while (i < n) {
+            if (pattern.charAt(j) == str.charAt(i)) {
+                if (j == m-1) return i-m+1;
+                i++;
+                j++;
+            }
+            else {
+                if (j > 0) j = failure[j-1];
+                else i++;
+            }
+        }
+        return -1;
+    }
 }
